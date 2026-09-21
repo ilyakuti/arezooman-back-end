@@ -1,0 +1,14 @@
+:root{
+    --green: #8e00cf;
+}
+
+.mycss_btn{
+    box-sizing: border-box;
+    
+    background-color: white;
+    color: var(--green);
+    border: 3px solid var(--green);
+    border-radius: 7px;
+    padding: 7px 12px;
+    margin: 8px;
+}
