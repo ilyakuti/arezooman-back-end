@@ -4,9 +4,9 @@ from .models import Person, Category, Wishes, Angel, Story, Contribution
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('username', 'full_name', 'email_address', 'role', 'total_donation', 'fulfilled_count')
+    list_display = ('username', 'get_full_name', 'email', 'role', 'total_donation', 'fulfilled_count')
     list_filter = ('role',)
-    search_fields = ('username', 'full_name', 'email_address')
+    search_fields = ('username', 'first_name', 'last_name', 'email')
     readonly_fields = ('total_donation', 'fulfilled_count')
 
 
@@ -27,7 +27,7 @@ class WishesAdmin(admin.ModelAdmin):
 @admin.register(Angel)
 class AngelAdmin(admin.ModelAdmin):
     list_display = ('user', 'tag')
-    search_fields = ('user__full_name', 'tag')
+    search_fields = ('user__username', 'tag')
 
 
 @admin.register(Story)
@@ -41,5 +41,5 @@ class StoryAdmin(admin.ModelAdmin):
 class ContributionAdmin(admin.ModelAdmin):
     list_display = ('angel', 'wish', 'amount', 'created_at')
     list_filter = ('created_at',)
-    search_fields = ('angel__full_name', 'wish__title')
+    search_fields = ('angel__username', 'wish__title')
     readonly_fields = ('created_at',)

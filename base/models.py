@@ -8,14 +8,9 @@ class Person(AbstractUser):
         ('angel', 'angel'),
     ]
 
-    full_name = models.CharField(max_length=127, null=True)
-    email_address = models.EmailField(max_length=127, null=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='wisher')
     total_donation = models.DecimalField(max_digits=12, decimal_places=0, default=0, editable=False, null=True)
     fulfilled_count = models.IntegerField(default=0, editable=False, null=True)
-
-    def __str__(self):
-        return self.full_name
 
 
 class Category(models.Model):
